@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Books CRUD</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel">
+        <h1>Books</h1>
+        <p class="intro">Skapa, redigera och ta bort böcker.</p>
+
+        <form id="book-form" class="book-form">
+          <div class="field">
+            <label for="title">Titel</label>
+            <input id="title" name="title" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="author">Författare</label>
+            <input id="author" name="author" type="text" required />
+          </div>
+
+          <div class="actions">
+            <button id="submit-button" type="submit">Lägg till bok</button>
+            <button id="cancel-button" type="button" class="secondary" hidden>Avbryt</button>
+          </div>
+        </form>
+
+        <p id="status" class="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Boklista</h2>
+        <ul id="book-list" class="book-list"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
