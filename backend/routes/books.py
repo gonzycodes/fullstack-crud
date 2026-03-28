@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Response, status
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from database import SessionLocal
@@ -18,23 +19,27 @@ def get_db():
 
 @router.get("/", response_model=list[BookRead])
 def list_books(db: Session = Depends(get_db)):
-    # minimal example: return all rows
     return db.query(Book).all()
 
 
 @router.post("/", response_model=BookRead, status_code=201)
 def create_book(payload: BookCreate, db: Session = Depends(get_db)):
-    # minimal example: create without validation rules
     book = Book(title=payload.title, author=payload.author)
-    db.add(book)
-    db.commit()
-    db.refresh(book)
-    return book
+    try:
+        db.add(book)
+        db.commit()
+        db.refresh(book)
+        return book
+    except SQLAlchemyError as exc:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Could not create book",
+        ) from exc
 
 
 @router.get("/{book_id}", response_model=BookRead)
 def get_book(book_id: int, db: Session = Depends(get_db)):
-    # minimal example: 404 if not found
     book = db.query(Book).filter(Book.id == book_id).first()
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
@@ -49,9 +54,17 @@ def update_book(book_id: int, payload: BookUpdate, db: Session = Depends(get_db)
 
     book.title = payload.title
     book.author = payload.author
-    db.commit()
-    db.refresh(book)
-    return book
+
+    try:
+        db.commit()
+        db.refresh(book)
+        return book
+    except SQLAlchemyError as exc:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Could not update book",
+        ) from exc
 
 
 @router.delete("/{book_id}", status_code=204)
@@ -60,5 +73,13 @@ def delete_book(book_id: int, db: Session = Depends(get_db)):
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
 
-    db.delete(book)
-    db.commit()
+    try:
+        db.delete(book)
+        db.commit()
+        return Response(status_code=status.HTTP_204_NO_CONTENT)
+    except SQLAlchemyError as exc:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Could not delete book",
+        ) from exc

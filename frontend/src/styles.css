@@ -1,0 +1,153 @@
+:root {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: #1d1d1d;
+  background:
+    radial-gradient(circle at top, rgba(255, 215, 160, 0.55), transparent 35%),
+    linear-gradient(135deg, #f7f1e3 0%, #efe3c8 45%, #d7c7a7 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  background: #2f5d50;
+  color: #fff;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+button.secondary {
+  background: #d8c49b;
+  color: #2a2114;
+}
+
+button.danger {
+  background: #a63d40;
+}
+
+input {
+  width: 100%;
+  margin-top: 0.35rem;
+  border: 1px solid #b89d72;
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 252, 245, 0.92);
+}
+
+.page {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 3rem 0 4rem;
+}
+
+.hero {
+  padding: 2rem 0 1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+  color: #5d4b2d;
+}
+
+.hero h1 {
+  margin: 0.5rem 0;
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  line-height: 0.95;
+  color: #2a2114;
+}
+
+.lead {
+  max-width: 45rem;
+  font-size: 1.05rem;
+  color: #4d3d23;
+}
+
+.panel {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(84, 65, 30, 0.18);
+  border-radius: 28px;
+  background: rgba(255, 250, 240, 0.78);
+  box-shadow: 0 20px 45px rgba(85, 63, 24, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.book-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.section-header,
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(241, 230, 204, 0.95));
+  border: 1px solid rgba(120, 92, 45, 0.14);
+}
+
+.card h3,
+.panel h2 {
+  margin: 0;
+}
+
+.card p,
+.message {
+  margin-bottom: 0;
+}
+
+.error {
+  color: #7e1f22;
+}
+
+@media (max-width: 640px) {
+  .page {
+    width: min(100% - 1rem, 100%);
+    padding-top: 1.25rem;
+  }
+
+  .panel {
+    padding: 1rem;
+    border-radius: 20px;
+  }
+}
