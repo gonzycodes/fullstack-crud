@@ -1,26 +1,26 @@
 # Book Manager
 
-En fullstack CRUD-applikation med FastAPI i backend och React i frontend. Projektet hanterar en enkel boksamling där du kan skapa, läsa, uppdatera och ta bort böcker.
+A fullstack CRUD application with FastAPI in the backend and React in the frontend. The project manages a simple book collection where you can create, read, update, and delete books.
 
-## Starta backend
+## Start the backend
 ```bash
 cd backend
 pip install -r requirements.txt
 python app.py
 ```
 
-Backend startar på `http://127.0.0.1:8000`.
-Om `python` inte finns på din dator, kör `python3 app.py` istället.
+The backend starts on `http://127.0.0.1:8000`.
+If `python` is not available on your machine, run `python3 app.py` instead.
 
-## Starta frontend
+## Start the frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-Frontend startar på `http://localhost:5173`.
-Frontend är byggd med React och Vite 8.
+The frontend starts on `http://localhost:5173`.
+The frontend is built with React and Vite 8.
 
 ## Endpoints
 - POST /books
@@ -29,14 +29,14 @@ Frontend är byggd med React och Vite 8.
 - PUT /books/{id}
 - DELETE /books/{id}
 
-## Funktioner
-- Skapa en ny bok
-- Visa alla bocker
-- Hamta en enskild bok via API
-- Uppdatera titel och forfattare
-- Ta bort en bok
+## Features
+- Create a new book
+- View all books
+- Fetch a single book through the API
+- Update a book title and author
+- Delete a book
 
-## Projektstruktur
+## Project structure
 ```text
 backend/
 ├── app.py
