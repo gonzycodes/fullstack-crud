@@ -1,4 +1,5 @@
 # Book Manager
+# Nahuel Gonzalez Jansson
 
 A fullstack CRUD application with FastAPI in the backend and React in the frontend. The project manages a simple book collection where you can create, read, update, and delete books.
 
