@@ -1,7 +1,6 @@
 # Book Manager
-# Ditt for och efternamn
 
-En fullstack CRUD-applikation med FastAPI i backend och React i frontend. Temat ar en enkel boksamling dar du kan skapa, lasa, uppdatera och ta bort bocker.
+En fullstack CRUD-applikation med FastAPI i backend och React i frontend. Projektet hanterar en enkel boksamling dar du kan skapa, lasa, uppdatera och ta bort bocker.
 
 ## Starta backend
 ```bash
@@ -52,6 +51,7 @@ backend/
 frontend/
 ├── index.html
 ├── package.json
+├── package-lock.json
 ├── vite.config.js
 └── src/
     ├── App.jsx
